@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">KYAU Student Resource App</string>
+
+    <string-array name="semester_options">
+        <item>Year-1 Semester-1</item>
+        <item>Year-1 Semester-2</item>
+        <item>Year-2 Semester-1</item>
+        <item>Year-2 Semester-2</item>
+        <item>Year-3 Semester-1</item>
+        <item>Year-3 Semester-2</item>
+        <item>Year-4 Semester-1</item>
+        <item>Year-4 Semester-2</item>
+    </string-array>
+</resources>
