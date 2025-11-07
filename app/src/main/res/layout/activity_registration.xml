@@ -89,7 +89,28 @@
                 android:padding="12dp"
                 android:background="@drawable/rounder_input_box"
                 android:layout_marginBottom="16dp"/>
-
+            <EditText
+                android:id="@+id/etRegBatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Batch"
+                android:textColorHint="#828282"
+                android:textColor="@color/black"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/rounder_input_box"
+                android:layout_marginBottom="16dp"/>
+            <EditText
+                android:id="@+id/etRegDept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Department"
+                android:textColorHint="#828282"
+                android:textColor="@color/black"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/rounder_input_box"
+                android:layout_marginBottom="16dp"/>
             <EditText
                 android:id="@+id/etRegPassword"
                 android:layout_width="match_parent"

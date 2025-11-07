@@ -1,6 +1,8 @@
 package com.example.kyaustudentresourceapp;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -9,14 +11,23 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 public class NoticeBoardActivity extends AppCompatActivity {
 
     private RecyclerView recyclerNotices;
     private NoticeAdapter adapter;
     private List<Notice> noticeList;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,40 +43,36 @@ public class NoticeBoardActivity extends AppCompatActivity {
 
         recyclerNotices = findViewById(R.id.recyclerNotices);
         recyclerNotices.setLayoutManager(new LinearLayoutManager(this));
-
-        // Dummy Data
         noticeList = new ArrayList<>();
-        noticeList.add(new Notice(
-                "Midterm Exam Schedule Released",
-                "The midterm exams will start from Oct 25. Check the routine section for details.",
-                "Oct 12, 2025",
-                "Exams"));
-
-        noticeList.add(new Notice(
-                "Department Picnic Registration",
-                "Students can now register for the annual picnic. Limited seats available!",
-                "Oct 10, 2025",
-                "Events"));
-
-        noticeList.add(new Notice(
-                "New Course Material Uploaded",
-                "Lecture notes for Data Structures have been updated in the Course Info section.",
-                "Oct 9, 2025",
-                "Academics"));
-
-        noticeList.add(new Notice(
-                "Library Timing Change",
-                "The library will remain open until 8 PM on weekdays from this month.",
-                "Oct 7, 2025",
-                "General"));
-
-        noticeList.add(new Notice(
-                "Workshop on AI and Ethics",
-                "Join us for a workshop conducted by the CSE Department on Oct 20.",
-                "Oct 5, 2025",
-                "Seminar"));
-
         adapter = new NoticeAdapter(this, noticeList);
         recyclerNotices.setAdapter(adapter);
+
+        firestore = FirebaseFirestore.getInstance();
+
+        loadNoticesRealtime();
+    }
+
+    private void loadNoticesRealtime() {
+        firestore.collection("notices")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Toast.makeText(NoticeBoardActivity.this, "Failed to load notices", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        noticeList.clear();
+                        for (QueryDocumentSnapshot doc : value) {
+                            String title = doc.getString("title");
+                            String body = doc.getString("body");
+                            String date = doc.getString("date");
+                            String category = doc.getString("category");
+
+                            noticeList.add(new Notice(title, body, date, category));
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 }

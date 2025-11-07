@@ -147,6 +147,14 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
+                    <View
+                        android:id="@+id/redDotNotice"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_gravity="end|top"
+                        android:layout_margin="6dp"
+                        android:background="@drawable/red_dot"
+                        android:visibility="gone"/>
                 </androidx.cardview.widget.CardView>
 
                 <!-- Results -->
@@ -333,5 +341,6 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 </FrameLayout>

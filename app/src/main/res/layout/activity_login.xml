@@ -72,7 +72,7 @@
                 android:hint="0622XXXXXXXXXXXX"
                 android:textColorHint="#828282"
                 android:textColor="@color/black"
-                android:inputType="number"
+                android:inputType="text"
                 android:padding="12dp"
                 android:background="@drawable/rounder_input_box"
                 android:layout_marginBottom="16dp"/>
@@ -83,7 +83,7 @@
                 android:hint="*******"
                 android:textColorHint="#828282"
                 android:textColor="@color/black"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:padding="12dp"
                 android:background="@drawable/rounder_input_box"
                 android:layout_marginBottom="16dp"/>

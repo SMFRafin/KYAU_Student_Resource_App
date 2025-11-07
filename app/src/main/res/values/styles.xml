@@ -7,4 +7,30 @@
         <item name="cardCornerRadius">8dp</item>
         <item name="cardElevation">2dp</item>
     </style>
+        <!-- Base style for all TextViews -->
+        <style name="AppTextView" parent="Widget.MaterialComponents.TextView">
+            <item name="android:textColor">@color/text_primary</item>
+            <item name="android:background">@color/white</item>
+        </style>
+
+        <!-- Base style for all EditTexts -->
+        <style name="AppEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+            <item name="android:textColor">@color/text_primary</item>
+            <item name="android:textColorHint">@color/text_secondary</item>
+            <item name="android:background">@color/white</item>
+            <item name="boxStrokeColor">@color/purple_500</item>
+        </style>
+
+        <!-- Base style for all Buttons -->
+        <style name="AppButton" parent="Widget.MaterialComponents.Button">
+            <item name="android:textColor">@color/white</item>
+            <item name="backgroundTint">@color/purple_500</item>
+        </style>
+
+        <!-- Base style for all CardViews -->
+        <style name="AppCardView" parent="CardView">
+            <item name="cardBackgroundColor">@color/white</item>
+            <item name="cardCornerRadius">8dp</item>
+            <item name="cardElevation">4dp</item>
+        </style>
 </resources>

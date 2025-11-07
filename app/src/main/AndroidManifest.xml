@@ -16,6 +16,27 @@
         android:theme="@style/Theme.KYAUStudentResourceApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AddCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CourseInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewStudentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".NoticeBoardActivity"
             android:exported="false" />
         <activity
